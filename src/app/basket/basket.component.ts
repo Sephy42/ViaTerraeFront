@@ -6,7 +6,7 @@ import { PublicService, Basket } from '../core/services/public.service';
   templateUrl: './basket.component.html',
   styleUrls: ['./basket.component.scss']
 })
-export class BasketComponent implements OnInit {
+export class BasketsComponent implements OnInit {
 
   constructor(private publicService: PublicService) { }
 
