@@ -1,27 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
-
-main {
-    .form-signin {
-        margin: auto;
-    }
-
-    padding-top: 60px;
-    display: flex; /* contexte sur le parent */
-    height : 100%;
+html,
+body {
+  height: 100%;
 }
 
-svg.fa-home path {
-    &:hover {
-        fill: darkgreen;
-    }
-        transition : all 1s ease;
-        fill: white;
+.notification{
+    left: -10px;
+    top:-24px;
+    position: relative;
 }
+// main {
+//     .form-signin {
+//         margin: auto;
+//     }
 
-.form-signin {
-    width: 100%;
-    margin: auto;
-    max-width: 330px;
-    padding: 15px;
-    margin: 0 auto;
-}
+//     // padding-top: 60px;
+//     display: flex; /* contexte sur le parent */
+//     height : 100%;
+// }
+
+
+// .form-signin {
+//     width: 100%;
+//     margin: auto;
+//     max-width: 330px;
+//     padding: 15px;
+//     margin: 0 auto;
+// }
