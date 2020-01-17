@@ -1,0 +1,16 @@
+<div >
+    <header>
+        <h1>Paniers de la semaine</h1>
+    </header>
+    <main>
+        
+<div *ngFor="let basket of basketList">
+    <ul>
+        <li >
+            <p>{{basket.label}}</p>
+            <img *ngIf="basket" [src]="'http://localhost:9999/api/public/basket/' + basket.id + '/picture'">
+        </li>
+      </ul>
+</div>
+</main>
+  </div>

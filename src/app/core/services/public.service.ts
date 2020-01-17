@@ -1,51 +1,54 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient} from '@angular/common/http';
+import { Observable} from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 
-export interface Product {
-	id : number;
-	label : string;
+export class Category{
+private id: number;
+private label: string;
 }
 
-export interface UsedProduct {
-	id : number;
-	quantity : number;
-	unit : string;
-	product : Product;
+
+export class Product{
+  private id:	number;
+  private	label: string;
+  private	 category: Category;
+
+}
+export class UsedProduct{
+  private id: number;
+	private quantity: number;
+	private unit: string;
+ private	 product: Product;
+
 }
 
-export interface Basket {
-   	id : number;
-	 beginDate : Date;
-	 endDate : Date;
-	 cost : number;
-	 productCount : number;
-	 quantityAvailable : number;
-	 label : string;
-	 listProduct : UsedProduct[] ;
-	
-	// Set<UsedProduct> listProduct;
-	 //Picture picture;
-}
+export class Basket{
 
+  private id: number;
+	private beginDate: Date;
+	private endDate: Date;
+	private  cost: number;
+	private ProductCount : number;
+	private  quantityAvailable: number;
+	private label: string;
+	private listProduct: Product[];	
+
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class PublicService {
-  
-  private basketList = 'http://localhost:9999/api/public/baskets';
-  private usedProductList = 'http://localhost:9999/api/public/baskets';
-
+ 
   constructor(private httpClient: HttpClient) { }
 
-  public getBaskets(): Observable<Basket[]> {
-    return this.httpClient.get<Basket[]>(this.basketList);
+  public getWeekBasket(): Observable<Basket[]> {
+  return  this.httpClient.get<Basket[]>(`${environment.apiUrl}/public/baskets`);
   }
 
-/*  public getUsedProducts(): Observable<UsedProduct[]> {
-    return this.httpClient.get<UsedProduct[]>(this.usedProductList);
-  }*/
 
+  
+  
 }

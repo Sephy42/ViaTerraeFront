@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PublicService } from '../core/services/public.service';
+import {Basket} from '../core/services/public.service';
 
 @Component({
   selector: 'app-public',
@@ -7,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PublicComponent implements OnInit {
 
-  constructor() { }
+  constructor(private publicService: PublicService) { }
 
-  ngOnInit() {
-  }
+  basketList: Basket[] = null;
+  
+    ngOnInit() {
+      this.publicService.getWeekBasket().subscribe(baskets=> {
+  
+        this.basketList = baskets;
+        
+                console.log(baskets);
+              }, error =>{
+              console.log(error);
+            }
+            );
+  
+    }
+  
+   
 
 }
+
+
+
+
+
