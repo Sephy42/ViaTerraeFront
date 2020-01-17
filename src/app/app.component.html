@@ -13,8 +13,8 @@
         </li>
         <li class="nav-item">
           <span>
-          <button *ngIf='!currentUser()'class="btn btn-link" [routerLink]="['login']" class="add-cursor">Connexion</button>
-          <button *ngIf='currentUser()' class="btn btn-link"  (click)='deleteCurrentUser()' class="add-cursor">Deconnexion</button>
+          <button *ngIf='!currentUser()' type="button" class="btn btn-outline-light add-cursor" [routerLink]="['login']" >Connexion</button>
+          <button *ngIf='currentUser()' type="button" class="btn btn-outline-light add-cursor" (click)='deleteCurrentUser()'>Deconnexion</button>
         </span>
         </li>
       
@@ -22,7 +22,7 @@
   
         
         <span class="nav-item dropdown">
-         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <a class="nav-link dropdown-toggle btn btn-light add-cursor" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Infos
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
