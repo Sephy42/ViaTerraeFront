@@ -7,17 +7,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PublicComponent } from './public/public.component';
 import { LoginComponent } from './login/login.component';
-import { BasketComponent } from './basket/basket.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PublicService } from './core/services/public.service';
 import { UserService } from './core/services/user.service';
+import { AccueilComponent } from './accueil/accueil.component';
+import { RegisterComponent } from './register/register.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PublicComponent,
-    BasketComponent,
     LoginComponent,
+    AccueilComponent,
+    RegisterComponent,
+    MenuComponent,
 
   ],
   imports: [

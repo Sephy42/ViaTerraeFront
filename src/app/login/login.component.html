@@ -3,13 +3,10 @@
     <div class="row">
         <div class="col-3"></div>
         <div class="col-6">
-            <form [formGroup]="loginForm" class="form-signin">
 
-
-
-                                
-                <main>
-                    <form class="form-signin">
+                              
+                <main class="">
+                    <form  [formGroup]="loginForm" class="form-signin">
                     <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
 
                     <!-- mail -->
@@ -51,10 +48,7 @@
                     <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="go()" [disabled]="isNotFormValid()">Se connecter</button>
                     </form>
                 </main>
-                              
-          
-                  
-            </form>
+
         </div>
         <div class="col-3"></div>
     </div>
