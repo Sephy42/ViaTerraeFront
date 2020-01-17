@@ -34,7 +34,7 @@ export class Basket{
 	private  quantityAvailable: number;
 	private label: string;
 	private listProduct: Product[];	
-
+  private hasImage: boolean;
 }
 
 @Injectable({

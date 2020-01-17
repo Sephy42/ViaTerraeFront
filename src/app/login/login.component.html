@@ -7,43 +7,54 @@
 
 
 
-             
+                                
+                <main>
+                    <form class="form-signin">
+                    <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
 
+                    <!-- mail -->
+                    <label for="inputEmail" class="sr-only">Adresse email</label>
+
+                    <input type="email" id="inputEmail" class="form-control mb-2" placeholder="Email address" required="" autofocus="">
+                    <div *ngIf="login.errors && login.touched">
+                        <div class="badge badge-danger" *ngIf="login.errors.required">
+                            This is required.
+                        </div>
+            
+                        <div class="error-placeholder"
+                            *ngIf="login.errors.minlength">
+                            The user login must have at least 5 caracters.
+                        </div>
+                    </div>
+
+                    <!-- password -->
+                    <label for="inputPassword" class="sr-only">Mot de passe</label>                
+            
+                    <input  formControlName="password" type="password" required  placeholder="Password"  class="form-control  mb-3" >
+                    <div *ngIf="password.errors && password.touched">
+                        <span class="error-placeholder" *ngIf="password.errors.required">
+                            This is required.
+                        </span>
+                
+                        <span class="error-placeholder"
+                            *ngIf="password.errors.minlength">
+                            The password must have at least 5 caracters.
+                        </span>
+                    </div>
+
+                    <!-- bouton -->
+                    <div class="checkbox mb-3">
+                        <label>
+                        <input type="checkbox" value="remember-me"> Se souvenir de moi
+                        </label>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="go()" [disabled]="isNotFormValid()">Se connecter</button>
+                    </form>
+                </main>
+                              
+          
                   
-        
-                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-                <label for="inputUsername" class="sr-only">User name</label>
-                <input type="username" formControlName="login" required  placeholder="Username" class="form-control mb-2">
-          
-                  <div *ngIf="login.errors && login.touched">
-                      <div class="badge badge-danger" *ngIf="login.errors.required">
-                          This is required.
-                      </div>
-          
-                      <div class="error-placeholder"
-                          *ngIf="login.errors.minlength">
-                          The user login must have at least 5 caracters.
-                      </div>
-                  </div>
-          
-          
-                <label for="inputPassword" class="sr-only">Password</label>
-                <input  formControlName="password" type="password" required  placeholder="Password"  class="form-control  mb-3" >
-                <div *ngIf="password.errors && password.touched">
-                  <span class="error-placeholder" *ngIf="password.errors.required">
-                      This is required.
-                  </span>
-          
-                  <span class="error-placeholder"
-                      *ngIf="password.errors.minlength">
-                      The password must have at least 5 caracters.
-                  </span>
-              </div>
-          
-                <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="go()" [disabled]="isNotFormValid()">Sign in</button>
-          
-                <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
-              </form>
+            </form>
         </div>
         <div class="col-3"></div>
     </div>

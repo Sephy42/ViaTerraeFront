@@ -8,7 +8,8 @@
     <ul>
         <li >
             <p>{{basket.label}}</p>
-            <img *ngIf="basket" [src]="'http://localhost:9999/api/public/basket/' + basket.id + '/picture'">
+            
+            <img *ngIf="basket && basket.hasImage"  [src]="'http://localhost:9999/api/public/basket/' + basket.id + '/picture'">
         </li>
       </ul>
 </div>
