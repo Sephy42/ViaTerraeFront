@@ -46,7 +46,7 @@ public go(): void {
 
 // show spinner
   this.spinner=true;
-  this.userService.userIdentification(this.loginForm.value).subscribe( r=> {
+  this.userService.userIdentification(this.loginForm.value).subscribe( r => {
     //hide spinner
     this.spinner=false;
     console.log(r);

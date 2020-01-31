@@ -1,26 +1,34 @@
 <!-- Fixed navbar -->
 <nav class="navbar navbar-expand-md navbar-dark bg-primary">
-  <a class="navbar-brand" [routerLink]="['accueil']">{{title}}</a>
+  <a class="navbar-brand" [routerLink]="['accueil']">
+  <span class="d-md-none d-sm-block">
+    <i class="fas fa-shopping-basket fa-2x" style="color: white"></i><div class="badge badge-pill badge-danger notification">{{ quantity }}</div>
+  </span> {{title}}
+  </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link " [routerLink]="['public']"><i class="fas fa-shopping-basket fa-2x"></i></a>
+      <li class="nav-item active  ">
+        <a class="nav-link   add-cursor" [routerLink]="['public']">Paniers de la semaine</a>
       </li>
-
+      <li class="nav-item active d-md-none d-sm-block ">
+        <a *ngIf='!currentUser()' class="nav-link   add-cursor" [routerLink]="['login']">Connexion</a>
+        <a *ngIf='currentUser()' class="nav-link   add-cursor" (click)='deleteCurrentUser()' [routerLink]="['login']">Deconnexion</a>
+      </li>
     </ul>
-    <div class="">
-      <i class="fas fa-cart-arrow-down fa-2x " style="color: white"></i><div class="badge badge-pill badge-danger notification">40</div>
+    <div class="d-none d-md-block">
+      <i class="fas fa-shopping-basket fa-2x" style="color: white"></i><div class="badge badge-pill badge-danger notification">{{ quantity }}</div>
       </div>
-      <span>
+      <span class="d-none d-md-block">
         <button *ngIf='!currentUser()' type="button" class="btn btn-outline-light add-cursor"
           [routerLink]="['login']">Connexion</button>
         <button *ngIf='currentUser()' type="button" class="btn btn-outline-light add-cursor"
           (click)='deleteCurrentUser()'>Deconnexion</button>
+          
       </span>
-
+      
   </div>
 </nav>

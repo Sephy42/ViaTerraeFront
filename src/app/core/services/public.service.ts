@@ -5,36 +5,36 @@ import { environment } from 'src/environments/environment';
 
 
 export class Category{
-private id: number;
-private label: string;
+id: number;
+ label: string;
 }
 
 
 export class Product{
-  private id:	number;
-  private	label: string;
-  private	 category: Category;
-
+   id:	number;
+ 	label: string;
+  category: Category;
 }
+
 export class UsedProduct{
-  private id: number;
-	private quantity: number;
-	private unit: string;
- private	 product: Product;
+  id: number;
+ quantity: number;
+ unit: string;
+ 	 product: Product;
 
 }
 
 export class Basket{
 
-  private id: number;
-	private beginDate: Date;
-	private endDate: Date;
-	private  cost: number;
-	private ProductCount : number;
-	private  quantityAvailable: number;
-	private label: string;
-	private listProduct: Product[];	
-  private hasImage: boolean;
+  id: number;
+ beginDate: Date;
+	endDate: Date;
+	cost: number;
+	ProductCount : number;
+	quantityAvailable: number;
+	label: string;
+	listProduct: UsedProduct[];	
+  hasImage: boolean;
 }
 
 @Injectable({
@@ -47,7 +47,6 @@ export class PublicService {
   public getWeekBasket(): Observable<Basket[]> {
   return  this.httpClient.get<Basket[]>(`${environment.apiUrl}/public/baskets`);
   }
-
 
   
   

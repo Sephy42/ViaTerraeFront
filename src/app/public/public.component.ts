@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PublicService } from '../core/services/public.service';
 import {Basket} from '../core/services/public.service';
+import { OrderService } from '../core/services/order.service';
+
+
+
 
 @Component({
   selector: 'app-public',
@@ -9,25 +14,31 @@ import {Basket} from '../core/services/public.service';
 })
 export class PublicComponent implements OnInit {
 
-  constructor(private publicService: PublicService) { }
+ basketList: Basket[] =[];
 
-  basketList: Basket[] = null;
+  constructor ( private publicService: PublicService, private router: Router, private orderService: OrderService) { }
   
     ngOnInit() {
-      this.publicService.getWeekBasket().subscribe(baskets=> {
-  
+      this.publicService.getWeekBasket().subscribe(baskets=> {  
         this.basketList = baskets;
-        
-                console.log(baskets);
               }, error =>{
               console.log(error);
-            }
-            );
-  
+            });
     }
   
-   
+public getQuantity(b: Basket): number{
+ return this.orderService.getQuantity(b);
+}
 
+  public increment(b: Basket):void{
+    return this.orderService.increment(b);
+   }
+
+   public decrement(b: Basket):void{
+    return this.orderService.decrement(b);
+   }
+
+   
 }
 
 
