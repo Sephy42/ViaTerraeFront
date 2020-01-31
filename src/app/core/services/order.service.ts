@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Basket } from './public.service';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 export class OrderedBasket {
   id: number;
@@ -12,6 +12,7 @@ export class OrderedBasket {
 })
 export class OrderService {
   quantities: OrderedBasket[] = [];
+  currentQuantity: BehaviorSubject<number>= new BehaviorSubject<number>(0);
 
   constructor() { }
 
@@ -45,6 +46,7 @@ export class OrderService {
       this.quantities.push({ id: b.id, quantity: 1 });
 
     }
+this.currentQuantity.next(this.getTotalQuantity());
 
   }
 
@@ -53,7 +55,7 @@ export class OrderService {
     if (index >= 0) {
       this.quantities[index].quantity = this.quantities[index].quantity - 1;
     }
-
+    this.currentQuantity.next(this.getTotalQuantity());
   }
 
 
