@@ -1,13 +1,9 @@
 
-<div class="container d-flex h-100 justify-content-center align-items-center">
-    <div>
-
-
-       
-           
+<!--<div class="container d-flex h-100 justify-content-center align-items-center">-->
+<div class="container d-flex h-100 justify-content-center " style="padding: 70px;"> 
+    <div>           
             <div class="col-12">
-    
-                                  
+                                      
                     <main >
                         <form  [formGroup]="loginForm" class="form-signin">
                         <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
@@ -15,41 +11,54 @@
                         <!-- mail -->
                         <label for="inputEmail" class="sr-only">Adresse email</label>
     
-                        <input type="email" id="inputEmail" class="form-control mb-2" placeholder="Email address" required="" autofocus="">
+                        <input type="email"  formControlName="login" class="form-control mb-2" placeholder="Email address" required autofocus="">
                         <div *ngIf="login.errors && login.touched">
-                            <div class="badge badge-danger" *ngIf="login.errors.required">
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="login.errors.required">
                                 This is required.
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                 <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
                 
-                            <div class="error-placeholder"
-                                *ngIf="login.errors.minlength">
+                           <!-- <div class="alert alert-danger alert-dismissible fade show" role="alert"  *ngIf="login.errors.minlength">
                                 The user login must have at least 5 caracters.
-                            </div>
-                        </div>
-    
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                     <span aria-hidden="true">&times;</span>
+                                    </button>
+                            </div>-->
+                                                          
+                        </div>   
                         <!-- password -->
                         <label for="inputPassword" class="sr-only">Mot de passe</label>                
                 
                         <input  formControlName="password" type="password" required  placeholder="Password"  class="form-control  mb-3" >
                         <div *ngIf="password.errors && password.touched">
-                            <span class="error-placeholder" *ngIf="password.errors.required">
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="password.errors.required">
                                 This is required.
-                            </span>
-                    
-                            <span class="error-placeholder"
-                                *ngIf="password.errors.minlength">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                 <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert"   *ngIf="password.errors.minlength">
                                 The password must have at least 5 caracters.
-                            </span>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                     <span aria-hidden="true">&times;</span>
+                                    </button>
+                            </div>
+                                         
                         </div>
     
                         <!-- bouton -->
+                        <!--
                         <div class="checkbox mb-3">
                             <label>
                             <input type="checkbox" value="remember-me"> Se souvenir de moi
                             </label>
-                        </div>
+                        </div>-->
                         <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="go()" [disabled]="isNotFormValid()">Se connecter</button>
-                        </form>
+                          
+                     </form>
                     </main>
     
             </div>
@@ -60,6 +69,8 @@
     
 </div>
 
+    
+    
 
 
 

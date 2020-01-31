@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { UserService } from '../core/services/user.service';
+import { PublicService } from '../core/services/public.service';
+import { OrderService } from '../core/services/order.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-menu',
@@ -10,17 +12,20 @@ import { UserService } from '../core/services/user.service';
 })
 export class MenuComponent implements OnInit {
 
- constructor(private router: Router, private userService: UserService){}
- 
- title = 'Via Terrae';
+  constructor(private router: Router, private userService: UserService, private publicService: PublicService, private orderService: OrderService) { }
+
+  title = 'Via Terrae';
+  quantity: Observable<number>;
+  
   ngOnInit() {
   }
-  
- 
-  public currentUser(): boolean{
+
+  public currentUser(): boolean {
     return this.userService.isAuthenticated();
   }
-  public deleteCurrentUser():void{
+  public deleteCurrentUser(): void {
     this.userService.deleteUser();
   }
+
+
 }

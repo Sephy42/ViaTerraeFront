@@ -1,17 +1,65 @@
-<div >
-    <header>
-        <h1>Paniers de la semaine</h1>
-    </header>
-    <main>
-        
-<div *ngFor="let basket of basketList">
-    <ul>
-        <li >
-            <p>{{basket.label}}</p>
+
+<div  class="container pt-2">
+<form >
+    <div class="row " >  
+
+    <div class="col-lg-6 col-sm-12 pt-3 pb-2" *ngFor="let basket of basketList"> 
+        <div class="row">
+        <div class="col-lg-6 col-sm-12">      
+            <div class="d-flex h-100 flex-column justify-content-center">
+                <div class="text-center" > 
+                <img *ngIf="basket.hasImage" class="img-fluid " [src]="'http://localhost:9999/api/public/basket/' + basket.id + '/picture'" >
+            </div>    
+            </div>
+        </div>
+
+        <div class="col-lg-6  col-sm-12 pb-3 pt-2 ">
+
+            <div class="d-flex h-100 flex-column justify-content-between">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="basketLabel font-weight-bold border-bottom border-info "  >{{basket.label}}  </h2>
+                <div>
+                    <span class= "badge badge-pill badge-warning " style ="font-size: large;">{{basket.cost}}  &euro;</span>
+                </div>
+            </div>
+              
             
-            <img *ngIf="basket && basket.hasImage"  [src]="'http://localhost:9999/api/public/basket/' + basket.id + '/picture'">
-        </li>
-      </ul>
+            <div class="align-items-center">
+                <div class="badge mr-3" *ngFor="let usedProduct of basket.listProduct">
+                    <h3 class="productLabel">{{usedProduct.product.label}}</h3>
+                </div>
+            </div>
+
+           
+            <div  class="input-group ">   
+                 
+                <span class="input-group-btn">
+
+                    <button type="button" class="btn btn-primary btn-number" (click)="decrement(basket)" [disabled]="getQuantity(basket)==0">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </span>
+                <input  readonly   type="text"  class="form-control " [value]="getQuantity(basket)">               
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-primary btn-number"  (click)="increment(basket)">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </span>
+            </div >
+            
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    </div>
+<div class="row justify-content-md-center pt-3">   
+    <button  type="button" class="btn  btn-info add-cursor"  [routerLink]="['/public/order']" (click)="addToCart(quantity,basket)" >Commander</button>  
 </div>
-</main>
-  </div>
+</form>
+</div>
+
+
+

@@ -13,6 +13,8 @@ import { UserService } from './core/services/user.service';
 import { AccueilComponent } from './accueil/accueil.component';
 import { RegisterComponent } from './register/register.component';
 import { MenuComponent } from './menu/menu.component';
+import { OrderService } from './core/services/order.service';
+
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { MenuComponent } from './menu/menu.component';
     AccueilComponent,
     RegisterComponent,
     MenuComponent,
+
 
   ],
   imports: [
@@ -33,7 +36,7 @@ import { MenuComponent } from './menu/menu.component';
     HttpClientModule,
     FormsModule,
   ],
-  providers: [PublicService,UserService],
+  providers: [PublicService,UserService, OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

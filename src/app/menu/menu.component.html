@@ -8,19 +8,21 @@
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link " [routerLink]="['public']"><i class="fas fa-shopping-basket fa-2x"></i></a>
+        <button  type="button" class="btn btn-outline-light add-cursor"
+          [routerLink]="['public']">Paniers de la semaine</button>
       </li>
 
     </ul>
     <div class="">
-      <i class="fas fa-cart-arrow-down fa-2x " style="color: white"></i><div class="badge badge-pill badge-danger notification">40</div>
+      <i class="fas fa-shopping-basket fa-2x" style="color: white"></i><div class="badge badge-pill badge-danger notification">{{ quantity | async }}</div>
       </div>
       <span>
         <button *ngIf='!currentUser()' type="button" class="btn btn-outline-light add-cursor"
           [routerLink]="['login']">Connexion</button>
         <button *ngIf='currentUser()' type="button" class="btn btn-outline-light add-cursor"
           (click)='deleteCurrentUser()'>Deconnexion</button>
+          
       </span>
-
+      
   </div>
 </nav>
