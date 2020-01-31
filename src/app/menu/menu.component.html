@@ -15,20 +15,19 @@
         <a class="nav-link   add-cursor" [routerLink]="['public']">Paniers de la semaine</a>
       </li>
       <li class="nav-item active d-md-none d-sm-block ">
-        <a *ngIf='!currentUser()' class ="nav-link   add-cursor" [routerLink]="['register']">S'inscrire</a>
-        <a *ngIf='!currentUser()' class="nav-link   add-cursor" [routerLink]="['login']">Connexion</a>
-        <a *ngIf='currentUser()' class="nav-link   add-cursor" (click)='deleteCurrentUser()' [routerLink]="['login']">Deconnexion</a>
+        <a *ngIf='this.currentUser==null' class="nav-link   add-cursor" [routerLink]="['login']">Connexion</a>
+        <a *ngIf='this.currentUser!=null' class="nav-link   add-cursor" (click)='deleteCurrentUser()' [routerLink]="['login']">Deconnexion</a>
       </li>
     </ul>
     <div class="d-none d-md-block">
       <i class="fas fa-shopping-basket fa-2x" style="color: white"></i><div class="badge badge-pill badge-danger notification">{{ quantity }}</div>
       </div>
       <span class="d-none d-md-block">
-        <button *ngIf='!currentUser()' type="button" class="btn btn-outline-light add-cursor"
+        <button *ngIf='this.currentUser==null' type="button" class="btn btn-outline-light add-cursor"
           [routerLink]="['register']">S'inscrire</button>
-        <button *ngIf='!currentUser()' type="button" class="btn btn-outline-light add-cursor"
+        <button *ngIf='this.currentUser==null' type="button" class="btn btn-outline-light add-cursor"
           [routerLink]="['login']">Connexion</button>
-        <button *ngIf='currentUser()' type="button" class="btn btn-outline-light add-cursor"
+        <button *ngIf='this.currentUser!=null' type="button" class="btn btn-outline-light add-cursor"
           (click)='deleteCurrentUser()'>Deconnexion</button>
           
       </span>

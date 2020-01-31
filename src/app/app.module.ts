@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PublicComponent } from './public/public.component';
@@ -13,6 +13,7 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { RegisterComponent } from './register/register.component';
 import { MenuComponent } from './menu/menu.component';
 import { OrderService } from './core/services/order.service';
+import { TokenInterceptor } from './core/guards/token-interceptor';
 
 
 @NgModule({
@@ -34,7 +35,11 @@ import { OrderService } from './core/services/order.service';
     HttpClientModule,
     FormsModule,
   ],
-  providers: [PublicService,UserService, OrderService],
+  providers: [PublicService,UserService, OrderService,  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
