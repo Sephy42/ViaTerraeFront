@@ -15,6 +15,7 @@ import { RegisterComponent } from './register/register.component';
 import { MenuComponent } from './menu/menu.component';
 import { OrderService } from './core/services/order.service';
 import { TokenInterceptor } from './core/guards/token-interceptor';
+import { JWTInterceptor } from './core/guards/jwtinterceptor';
 
 
 @NgModule({
@@ -40,6 +41,10 @@ import { TokenInterceptor } from './core/guards/token-interceptor';
   providers: [PublicService,UserService, OrderService,  {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
+    multi: true
+  },{
+    provide: HTTP_INTERCEPTORS,
+    useClass: JWTInterceptor,
     multi: true
   }],
   bootstrap: [AppComponent]
