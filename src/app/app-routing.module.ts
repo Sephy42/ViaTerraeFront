@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { PublicComponent } from './public/public.component';
 import { AccueilComponent } from './accueil/accueil.component';
+import { RegisterComponent } from './register/register.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,10 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent
   },
-
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
   {
     path: '**',
     redirectTo: `home`,

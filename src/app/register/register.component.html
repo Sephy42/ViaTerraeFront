@@ -1,1 +1,99 @@
-<p>register works!</p>
+
+<!--<div class="container d-flex h-100 justify-content-center align-items-center">-->
+    <div class="container d-flex h-100 justify-content-center " style="padding: 70px;"> 
+        <div>           
+                <div class="col-12">
+                                          
+                        <main >
+                            <form  [formGroup]="registerForm" class="form-register">
+                            <h1 class="h3 mb-3 font-weight-normal">S'inscrire</h1>
+
+                            <!-- first name -->
+                            <label for="inputFirstname" class="sr-only">Prénom</label>
+                            
+                            <input type="text" formControlName="firstname" class="form-control mb-2" placeholder="Firstname" autofocus="">
+                            
+                            <!-- name -->
+                            <label for="inputName" class="sr-only">Nom</label>
+                            
+                            <input type="text" formControlName="name" class="form-control mb-2" placeholder="Name" required autofocus="">
+                            <div *ngIf="login.errors && login.touched">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="name.errors.required">
+                                    This is required.
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- birthdate -->
+                            <label for="inputBirthdate" class="sr-only">Date de naissance</label>
+                            
+                            <input type="date" formControlName="birthdate" class="form-control mb-2" placeholder="birthdate" autofocus="">
+
+                            <!-- phone -->
+                            <label for="inputPhone" class="sr-only">Téléphone</label>
+                            
+                            <input type="tel" formControlName="phone" class="form-control mb-2" placeholder="phone" autofocus="">
+
+                            <!-- mail -->
+                            <label for="inputEmail" class="sr-only">Adresse email</label>
+        
+                            <input type="email"  formControlName="login" class="form-control mb-2" placeholder="Email address" required autofocus="">
+                            <div *ngIf="login.errors && login.touched">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="login.errors.required">
+                                    This is required.
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                     <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                    
+                               <!-- <div class="alert alert-danger alert-dismissible fade show" role="alert"  *ngIf="login.errors.minlength">
+                                    The user login must have at least 5 caracters.
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                         <span aria-hidden="true">&times;</span>
+                                        </button>
+                                </div>-->
+                                                              
+                            </div>   
+                            <!-- password -->
+                            <label for="inputPassword" class="sr-only">Mot de passe</label>                
+                    
+                            <input  formControlName="password" type="password" required  placeholder="Password"  class="form-control  mb-3" >
+                            <div *ngIf="password.errors && password.touched">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="password.errors.required">
+                                    This is required.
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                     <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                    
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert"   *ngIf="password.errors.minlength">
+                                    The password must have at least 5 caracters.
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                         <span aria-hidden="true">&times;</span>
+                                        </button>
+                                </div>
+                                             
+                            </div>
+        
+                            <!-- bouton -->
+                            <!--
+                            <div class="checkbox mb-3">
+                                <label>
+                                <input type="checkbox" value="remember-me"> Se souvenir de moi
+                                </label>
+                            </div>-->
+                            <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="go()" [disabled]="isNotFormValid()">S'enregister</button>
+                              
+                         </form>
+                        </main>
+        
+                </div>
+                
+           
+    
+        </div>
+        
+    </div>
+    

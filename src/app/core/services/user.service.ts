@@ -12,6 +12,15 @@ export interface IUser{
   password: string;
 }
 
+export interface IUserToCreate {
+  name: string;
+  firstName: string;
+  birthDate: string;
+  email: string;
+  phone: string;
+  password: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -58,6 +67,32 @@ public userIdentification(user: IUser): Observable<boolean> {
     }else{return false};
   }));
    
+}
+
+public userCreation(user: IUserToCreate): void {
+  let userToCreate= {
+    name: user.name, 
+    firstName: user.firstName,
+    birthDate: user.birthDate,
+    email: user.email,
+    phone: user.phone,
+    password: user.password
+  }
+  console.log(userToCreate);
+
+  // return this.httpClient.post<any>(environment.apiUrl+'/public/client/', userToTest).pipe(map(
+  //   resp =>{
+  //     const user= resp.token;
+  //     console.log(token);
+      
+  //     if(token && token!=null){
+  //     localStorage.setItem('token', token);
+  //     console.log(localStorage.getItem('token'));
+
+  //     this.currentClient.next(user);
+  //     return true;
+  //   }else{return false};
+  // }));
 }
 
 
