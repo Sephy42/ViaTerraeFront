@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +16,8 @@ import { MenuComponent } from './menu/menu.component';
 import { OrderService } from './core/services/order.service';
 import { TokenInterceptor } from './core/guards/token-interceptor';
 import { JWTInterceptor } from './core/guards/jwtinterceptor';
+import { ModalOrderComponent } from './modal-order/modal-order.component';
+
 
 
 @NgModule({
@@ -26,6 +28,8 @@ import { JWTInterceptor } from './core/guards/jwtinterceptor';
     AccueilComponent,
     RegisterComponent,
     MenuComponent,
+    ModalOrderComponent,
+
 
 
   ],
@@ -33,7 +37,7 @@ import { JWTInterceptor } from './core/guards/jwtinterceptor';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FontAwesomeModule,
+
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
