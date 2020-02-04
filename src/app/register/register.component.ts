@@ -10,29 +10,30 @@ import { UserService } from '../core/services/user.service';
 })
 export class RegisterComponent implements OnInit {
 
+  public error: string = '';
   public registerForm: FormGroup;
   public spinner: boolean= false;
 
   constructor(private formBuilder: FormBuilder,private userService: UserService ,private router: Router) { }
 
-  public get firstname():AbstractControl{
-    return this.registerForm.controls.firstname;
+  public get firstName():AbstractControl{
+    return this.registerForm.controls.firstName;
   }
 
   public get name():AbstractControl{
     return this.registerForm.controls.name;
   }
 
-  public get birthdate():AbstractControl{
-    return this.registerForm.controls.birthdate;
+  public get birthDate():AbstractControl{
+    return this.registerForm.controls.birthDate;
   }
 
   public get phone():AbstractControl{
     return this.registerForm.controls.phone;
   }
 
-  public get login():AbstractControl{
-    return this.registerForm.controls.login;
+  public get email():AbstractControl{
+    return this.registerForm.controls.email;
   }
 
   public get password():AbstractControl{
@@ -41,7 +42,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm= this.formBuilder.group({   
-      firstname:['',
+      firstName:['',
       ],
 
       name:['',
@@ -51,11 +52,11 @@ export class RegisterComponent implements OnInit {
         ]
       ],
  
-      birthdate:['',],
+      birthDate:['',],
 
       phone:['', ],
       
-      login:['',
+      email:['',
         [
           Validators.required,
           Validators.minLength(5)
@@ -75,17 +76,20 @@ export class RegisterComponent implements OnInit {
 
     // show spinner
       this.spinner=true;
-      this.userService.userIdentification(this.registerForm.value).subscribe( r => {
+      this.userService.userCreation(this.registerForm.value).subscribe( r => {
         //hide spinner
         this.spinner=false;
         console.log(r);
         if (r){ 
-          // ok user identified
-          this.router.navigate(['home']);}
+          // ok user created
+          this.error = "ok";
+          this.router.navigate(['register']);}
         else{
           console.log('Something is wrong !');
         }   
-      });
+      }, err => { 
+         if(err.error.message==='RG-12345') this.error = "Cette adresse mail est déjà utilisée.";
+       });
      
     }
     

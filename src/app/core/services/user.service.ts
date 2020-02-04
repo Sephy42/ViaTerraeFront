@@ -64,12 +64,12 @@ public userIdentification(user: IUser): Observable<boolean> {
 
       this.currentClient.next(user);
       return true;
-    }else{return false};
+      }else{return false};
   }));
    
 }
 
-public userCreation(user: IUserToCreate): void {
+public userCreation(user: IUserToCreate): Observable<boolean> {
   let userToCreate= {
     name: user.name, 
     firstName: user.firstName,
@@ -80,19 +80,12 @@ public userCreation(user: IUserToCreate): void {
   }
   console.log(userToCreate);
 
-  // return this.httpClient.post<any>(environment.apiUrl+'/public/client/', userToTest).pipe(map(
-  //   resp =>{
-  //     const user= resp.token;
-  //     console.log(token);
-      
-  //     if(token && token!=null){
-  //     localStorage.setItem('token', token);
-  //     console.log(localStorage.getItem('token'));
+  
+  return this.httpClient.post<any>(environment.apiUrl+'/public/client/', userToCreate).pipe(map(
+    resp =>{
+      return true;
+  }));
 
-  //     this.currentClient.next(user);
-  //     return true;
-  //   }else{return false};
-  // }));
 }
 
 
