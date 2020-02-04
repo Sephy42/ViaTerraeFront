@@ -4,6 +4,8 @@ import { UserService, IUser } from '../core/services/user.service';
 import { PublicService } from '../core/services/public.service';
 import { OrderService } from '../core/services/order.service';
 import { Observable, Subscription } from 'rxjs';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalOrderComponent } from '../modal-order/modal-order.component';
 
 @Component({
   selector: 'app-menu',
@@ -13,7 +15,9 @@ import { Observable, Subscription } from 'rxjs';
 export class MenuComponent implements OnInit, OnDestroy {
   
 
-  constructor(private router: Router, private userService: UserService, private publicService: PublicService, private orderService: OrderService) { }
+  constructor(private router: Router, private userService: UserService, private publicService: PublicService, private orderService: OrderService,private modalService:NgbModal) {
+
+   }
 
   sub: Subscription;
   sub2: Subscription;
@@ -34,5 +38,14 @@ export class MenuComponent implements OnInit, OnDestroy {
     this.userService.deleteUser();
   }
 
+  open() {
+
+    this.modalService.open(ModalOrderComponent).result.then((result) => {
+      
+    }, (reason) => {
+      
+    });
+
+  }  
 
 }

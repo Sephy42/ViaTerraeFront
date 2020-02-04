@@ -11,8 +11,8 @@
                         <!-- mail -->
                         <label for="inputEmail" class="sr-only">Adresse email</label>
     
-                        <input type="email"  formControlName="login" class="form-control mb-2" placeholder="Email address" required autofocus="">
-                        <div *ngIf="login.errors && login.touched">
+                        <input type="email"  formControlName="login" class="form-control mb-2" placeholder="Email address" required >
+                        <!--<div *ngIf="submitted && login.errors && login.touched">
                             <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="login.errors.required">
                                 This is required.
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -20,12 +20,12 @@
                                 </button>
                             </div>
                                                           
-                        </div>   
+                        </div>-->
                         <!-- password -->
                         <label for="inputPassword" class="sr-only">Mot de passe</label>                
                 
                         <input  formControlName="password" type="password" required  placeholder="Password"  class="form-control  mb-3" >
-                        <div *ngIf="password.errors && password.touched">
+                       <!-- <div *ngIf="password.errors && password.touched">
                             <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="password.errors.required">
                                 This is required.
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -40,11 +40,14 @@
                                     </button>
                             </div>
                                          
-                        </div>
+                        </div>-->
     
                         <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="go()" [disabled]="isNotFormValid()">Se connecter</button>
-                          
+
                      </form>
+
+                     <h5 class=" mb-3 mt-5 font-weight-normal">Nouveau client ?</h5>
+                     <button class="btn btn-lg btn-primary btn-block btn-outline" routerLink="/register">S'inscrire</button>
                     </main>
     
             </div>

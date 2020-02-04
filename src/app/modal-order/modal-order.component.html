@@ -1,0 +1,61 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Votre commande</h4>
+    <button type="button" class="close " aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+
+
+    <form>
+        <div class="form-group">
+            <label style="font-weight: bold;">Votre sélection</label>
+            <div class="input-group">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Quantité</th>
+                            <th scope="col">Panier choisi</th>
+
+                        </tr>
+                    </thead>
+                    <tbody *ngFor='let orderedBasket of this.orderService.quantities '>
+                        <tr *ngIf='orderedBasket.quantity > 0'>
+
+                            <td>{{orderedBasket.quantity}}</td>
+                            <td>{{orderedBasket.basketLabel}}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <label style="font-weight: bold;">Coût total: </label>
+                <span class="ml-2 ">{{cost}} &euro;</span>
+                <label style="font-weight: bold;">Quand souhaitez vous récupérer votre commande ?</label>
+                <div class="input-group">
+                    <input id="pickup date" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker
+                        #dp="ngbDatepicker">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+                    </div>
+                </div>
+                <div>
+                    <label style="font-weight: bold;">Comment souhaitez vous payer ?</label>
+                    <div>
+                        <input type="radio" id="espece"name="paiement" value="espece">
+                        <label class="ml-2" for="espece">Espèces</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="card" name="paiement" value="card">
+                        <label class="ml-2" for="card">Carte bleu</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+</div>
+<div class="modal-footer">
+
+    <button type="button" class="btn btn-primary" (click)="activeModal.close('Close click')">Valider</button>
+</div>

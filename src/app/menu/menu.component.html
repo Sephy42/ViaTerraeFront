@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-primary">
   <a class="navbar-brand" [routerLink]="['accueil']">
   <span class="d-md-none d-sm-block">
-    <i class="fas fa-shopping-basket fa-2x" style="color: white"></i><div class="badge badge-pill badge-danger notification">{{ quantity }}</div>
+    <i class="fas fa-shopping-basket fa-2x" style="color: white" (click)='open()'></i><div class="badge badge-pill badge-danger notification">{{ quantity }}</div>
   </span> {{title}}
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
@@ -20,11 +20,9 @@
       </li>
     </ul>
     <div class="d-none d-md-block">
-      <i class="fas fa-shopping-basket fa-2x" style="color: white"></i><div class="badge badge-pill badge-danger notification">{{ quantity }}</div>
+      <i class="fas fa-shopping-basket fa-2x" style="color: white" (click)='open()'></i><div class="badge badge-pill badge-danger notification">{{ quantity }}</div>
       </div>
       <span class="d-none d-md-block">
-        <button *ngIf='this.currentUser==null' type="button" class="btn btn-outline-light add-cursor"
-          [routerLink]="['register']">S'inscrire</button>
         <button *ngIf='this.currentUser==null' type="button" class="btn btn-outline-light add-cursor"
           [routerLink]="['login']">Connexion</button>
         <button *ngIf='this.currentUser!=null' type="button" class="btn btn-outline-light add-cursor"

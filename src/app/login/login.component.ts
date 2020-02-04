@@ -12,7 +12,7 @@ import { UserService } from '../core/services/user.service';
 export class LoginComponent implements OnInit {
  public loginForm: FormGroup;
  public spinner: boolean= false;
-
+submitted : boolean=false;
   constructor(private formBuilder: FormBuilder,private userService: UserService ,private router: Router) { 
 
   }
@@ -47,6 +47,10 @@ public go(): void {
 
 // show spinner
   this.spinner=true;
+  this.submitted=true;
+
+
+  
   this.userService.userIdentification(this.loginForm.value).subscribe( r => {
     //hide spinner
     this.spinner=false;
