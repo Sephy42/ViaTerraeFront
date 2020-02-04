@@ -1,5 +1,7 @@
-import { Component} from '@angular/core';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Component, Input} from '@angular/core';
+import {  NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { OrderService } from '../core/services/order.service';
+import { summaryFileName } from '@angular/compiler/src/aot/util';
 
 @Component({
   selector: 'app-modal-order',
@@ -7,27 +9,16 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./modal-order.component.scss']
 })
 export class ModalOrderComponent {
-  closeResult: string;
+  @Input()
+  cost= this.getCost();
 
-  constructor(private modalService: NgbModal) { }
 
-  open(content) {
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
+  constructor(public activeModal: NgbActiveModal, private orderService: OrderService) { }
 
-  }
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
-  }
+public getCost():number {
+  let sum:number=0;
+  this.orderService.quantities.forEach(orderedBasket => sum=sum+orderedBasket.quantity* orderedBasket.cost );
+  return sum;
+}
 
 }

@@ -49,6 +49,9 @@ import { ModalOrderComponent } from './modal-order/modal-order.component';
     useClass: JWTInterceptor,
     multi: true
   }],
+  entryComponents:[
+    ModalOrderComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
